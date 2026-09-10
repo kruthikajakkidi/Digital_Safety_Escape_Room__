@@ -1,0 +1,93 @@
+module.exports = [
+  {
+    topicNumber: 1,
+    title: 'Phishing & Social Engineering',
+    slug: 'phishing-social-engineering',
+    districtName: 'Inbox District',
+    description: 'Learn to detect manipulative emails, spoofed sender addresses, disguise links, and social deception tactics.',
+    badgeName: 'Phishing Sentinel Badge',
+    badgeIcon: 'mail-warning',
+    badgeColor: '#a855f7',
+    icon: 'mail',
+    color: '#a855f7',
+    requiredTopicNumber: 0
+  },
+  {
+    topicNumber: 2,
+    title: 'Password & Account Security',
+    slug: 'password-account-security',
+    districtName: 'Security Vault',
+    description: 'Master multi-factor authentication, credential entropy, brute-force resistance, and avoid password reuse disasters.',
+    badgeName: 'Vault Architect Badge',
+    badgeIcon: 'key',
+    badgeColor: '#3b82f6',
+    icon: 'shield',
+    color: '#3b82f6',
+    requiredTopicNumber: 1
+  },
+  {
+    topicNumber: 3,
+    title: 'QR Codes & Safe Browsing',
+    slug: 'qr-safe-browsing',
+    districtName: 'QR Campus',
+    description: 'Scan, inspect, and evaluate suspicious QR posters, fake payment terminals, and malicious URL redirections.',
+    badgeName: 'QR Cyber Tracker Badge',
+    badgeIcon: 'qr-code',
+    badgeColor: '#10b981',
+    icon: 'qr-code',
+    color: '#10b981',
+    requiredTopicNumber: 2
+  },
+  {
+    topicNumber: 4,
+    title: 'Scam Messages & Online Fraud',
+    slug: 'scam-messages-online-fraud',
+    districtName: 'Chat Zone',
+    description: 'Identify predatory SMS, WhatsApp alerts, fraudulent internship offers, voice clones, and impersonators.',
+    badgeName: 'Fraud Interceptor Badge',
+    badgeIcon: 'message-square-warning',
+    badgeColor: '#f97316',
+    icon: 'message-square',
+    color: '#f97316',
+    requiredTopicNumber: 3
+  },
+  {
+    topicNumber: 5,
+    title: 'Privacy & Personal Data',
+    slug: 'privacy-personal-data',
+    districtName: 'Privacy Lab',
+    description: 'Lock down your digital footprint, audit excessive app permissions, and prevent dangerous oversharing.',
+    badgeName: 'Data Shield Guardian Badge',
+    badgeIcon: 'eye-off',
+    badgeColor: '#06b6d4',
+    icon: 'eye-off',
+    color: '#06b6d4',
+    requiredTopicNumber: 4
+  },
+  {
+    topicNumber: 6,
+    title: 'Device & Digital Security',
+    slug: 'device-digital-security',
+    districtName: 'Device Hub',
+    description: 'Harden mobile operating systems, evade malicious Wi-Fi honeypots, and discern fake software updates.',
+    badgeName: 'Device Hardener Badge',
+    badgeIcon: 'smartphone',
+    badgeColor: '#ec4899',
+    icon: 'smartphone',
+    color: '#ec4899',
+    requiredTopicNumber: 5
+  },
+  {
+    topicNumber: 7,
+    title: 'Cyber Emergency Response',
+    slug: 'cyber-emergency-response',
+    districtName: 'Emergency Center',
+    description: 'Crisis triage: What to do after clicking malicious links, account takeover, stolen devices, and multi-threat attacks.',
+    badgeName: 'Incident Responder Badge',
+    badgeIcon: 'flame',
+    badgeColor: '#ef4444',
+    icon: 'alert-triangle',
+    color: '#ef4444',
+    requiredTopicNumber: 6
+  }
+];

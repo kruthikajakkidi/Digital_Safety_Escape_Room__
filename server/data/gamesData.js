@@ -1,0 +1,435 @@
+module.exports = [
+  // TOPIC 1 — Phishing & Social Engineering
+  {
+    topicNumber: 1,
+    gameNumber: 1,
+    title: 'Phishing Detective',
+    slug: 'phishing-detective',
+    shortDescription: 'Inspect realistic emails, uncover disguised senders, urgency traps, and suspicious attachments.',
+    mechanicType: 'phishing-inspector',
+    difficulty: 'Medium',
+    totalLevels: 10,
+    xpReward: 500,
+    icon: 'search'
+  },
+  {
+    topicNumber: 1,
+    gameNumber: 2,
+    title: 'Fake Login',
+    slug: 'fake-login',
+    shortDescription: 'Audit login portals, domain SSL indicators, lookalike punycodes, and deceptive redirect URLs.',
+    mechanicType: 'fake-login',
+    difficulty: 'Medium',
+    totalLevels: 10,
+    xpReward: 500,
+    icon: 'log-in'
+  },
+  {
+    topicNumber: 1,
+    gameNumber: 3,
+    title: 'Social Engineering Chat',
+    slug: 'social-engineering-chat',
+    shortDescription: 'Engage with deceptive contacts claiming to be university IT, recruiters, or bank staff.',
+    mechanicType: 'chat-simulator',
+    difficulty: 'Hard',
+    totalLevels: 10,
+    xpReward: 600,
+    icon: 'message-circle'
+  },
+  {
+    topicNumber: 1,
+    gameNumber: 4,
+    title: 'Link Inspector',
+    slug: 'link-inspector',
+    shortDescription: 'Dissect misleading URLs, identify typosquatting domains, rogue subdomains, and malicious shorteners.',
+    mechanicType: 'link-inspector',
+    difficulty: 'Medium',
+    totalLevels: 10,
+    xpReward: 550,
+    icon: 'link'
+  },
+  {
+    topicNumber: 1,
+    gameNumber: 5,
+    title: 'Phishing Final Case',
+    slug: 'phishing-final-case',
+    shortDescription: 'A multi-stage cyber espionage case combining rogue emails, clone portals, and deceptive messages.',
+    mechanicType: 'case-forensic',
+    difficulty: 'Expert',
+    totalLevels: 10,
+    xpReward: 800,
+    icon: 'file-text'
+  },
+
+  // TOPIC 2 — Password & Account Security
+  {
+    topicNumber: 2,
+    gameNumber: 1,
+    title: 'Password Fortress',
+    slug: 'password-fortress',
+    shortDescription: 'Construct unbreakable cryptographic passphrases and analyze entropy against cracker dictionaries.',
+    mechanicType: 'password-vault',
+    difficulty: 'Easy',
+    totalLevels: 10,
+    xpReward: 450,
+    icon: 'shield'
+  },
+  {
+    topicNumber: 2,
+    gameNumber: 2,
+    title: 'Password Attack Simulator',
+    slug: 'password-attack-simulator',
+    shortDescription: 'Witness simulated brute-force and dictionary cracking speeds across weak versus salted passwords.',
+    mechanicType: 'attack-simulator',
+    difficulty: 'Medium',
+    totalLevels: 10,
+    xpReward: 500,
+    icon: 'cpu'
+  },
+  {
+    topicNumber: 2,
+    gameNumber: 3,
+    title: 'Password Reuse Trap',
+    slug: 'password-reuse-trap',
+    shortDescription: 'Witness how a single leaked credential domino-collapses bank, social, and academic accounts.',
+    mechanicType: 'reuse-graph',
+    difficulty: 'Hard',
+    totalLevels: 10,
+    xpReward: 600,
+    icon: 'git-branch'
+  },
+  {
+    topicNumber: 2,
+    gameNumber: 4,
+    title: 'MFA Defender',
+    slug: 'mfa-defender',
+    shortDescription: 'Fortify digital vaults by orchestrating hardware tokens, TOTP authenticators, and backup guards.',
+    mechanicType: 'mfa-matrix',
+    difficulty: 'Medium',
+    totalLevels: 10,
+    xpReward: 550,
+    icon: 'key'
+  },
+  {
+    topicNumber: 2,
+    gameNumber: 5,
+    title: 'Secure the Vault',
+    slug: 'secure-the-vault',
+    shortDescription: 'A high-stakes multi-layer defense challenge combining entropy, MFA, and recovery mitigation.',
+    mechanicType: 'vault-final',
+    difficulty: 'Expert',
+    totalLevels: 10,
+    xpReward: 800,
+    icon: 'lock'
+  },
+
+  // TOPIC 3 — QR Codes & Safe Browsing
+  {
+    topicNumber: 3,
+    gameNumber: 1,
+    title: 'QR Trap',
+    slug: 'qr-trap',
+    shortDescription: 'Inspect real-world QR flyers on campus, food counters, and Wi-Fi access spots for sticker tampering.',
+    mechanicType: 'qr-scanner',
+    difficulty: 'Medium',
+    totalLevels: 10,
+    xpReward: 500,
+    icon: 'qr-code'
+  },
+  {
+    topicNumber: 3,
+    gameNumber: 2,
+    title: 'Where Does This QR Go?',
+    slug: 'where-does-this-qr-go',
+    shortDescription: 'Trace decoded QR endpoints, sandbox redirect chains, and categorize safe vs risky destinations.',
+    mechanicType: 'redirect-triage',
+    difficulty: 'Medium',
+    totalLevels: 10,
+    xpReward: 550,
+    icon: 'compass'
+  },
+  {
+    topicNumber: 3,
+    gameNumber: 3,
+    title: 'Fake Website',
+    slug: 'fake-website',
+    shortDescription: 'Analyze cloned e-commerce portals, counterfeit payment gateways, and shady scholarship forms.',
+    mechanicType: 'website-audit',
+    difficulty: 'Hard',
+    totalLevels: 10,
+    xpReward: 600,
+    icon: 'globe'
+  },
+  {
+    topicNumber: 3,
+    gameNumber: 4,
+    title: 'QR Challenge Rush',
+    slug: 'qr-challenge-rush',
+    shortDescription: 'Fast-paced speed round! Classify rapid QR destinations under ticking time to build score combos.',
+    mechanicType: 'speed-rush',
+    difficulty: 'Hard',
+    totalLevels: 10,
+    xpReward: 650,
+    icon: 'zap'
+  },
+  {
+    topicNumber: 3,
+    gameNumber: 5,
+    title: 'Campus QR Mystery',
+    slug: 'campus-qr-mystery',
+    shortDescription: 'Navigate the university campus map to isolate rogue QR posters before students get exploited.',
+    mechanicType: 'campus-map',
+    difficulty: 'Expert',
+    totalLevels: 10,
+    xpReward: 850,
+    icon: 'map-pin'
+  },
+
+  // TOPIC 4 — Scam Messages & Online Fraud
+  {
+    topicNumber: 4,
+    gameNumber: 1,
+    title: 'Scam Chat',
+    slug: 'scam-chat',
+    shortDescription: 'Simulate mobile messaging apps to block, report, or verify delivery alerts and lottery notices.',
+    mechanicType: 'messaging-app',
+    difficulty: 'Medium',
+    totalLevels: 10,
+    xpReward: 500,
+    icon: 'message-square'
+  },
+  {
+    topicNumber: 4,
+    gameNumber: 2,
+    title: 'Scam or Safe?',
+    slug: 'scam-or-safe',
+    shortDescription: 'Rapid swipe triage! Instantly categorize urgent SMS alerts, verification texts, and job proposals.',
+    mechanicType: 'speed-swipe',
+    difficulty: 'Medium',
+    totalLevels: 10,
+    xpReward: 550,
+    icon: 'check-square'
+  },
+  {
+    topicNumber: 4,
+    gameNumber: 3,
+    title: 'Fake Offer',
+    slug: 'fake-offer',
+    shortDescription: 'Deconstruct suspicious remote internship contracts, too-good-to-be-true stipends, and bogus grants.',
+    mechanicType: 'document-scrutiny',
+    difficulty: 'Hard',
+    totalLevels: 10,
+    xpReward: 600,
+    icon: 'award'
+  },
+  {
+    topicNumber: 4,
+    gameNumber: 4,
+    title: 'Impersonation Game',
+    slug: 'impersonation-game',
+    shortDescription: 'Unmask voice-cloning scenarios, fake executive requests, and emergency family distress hoaxes.',
+    mechanicType: 'impersonator-audit',
+    difficulty: 'Hard',
+    totalLevels: 10,
+    xpReward: 650,
+    icon: 'user-x'
+  },
+  {
+    topicNumber: 4,
+    gameNumber: 5,
+    title: 'Scam Interceptor',
+    slug: 'scam-interceptor',
+    shortDescription: 'Emergency command center: Stop a multi-tier extortion fraud ring before innocent victims transfer funds.',
+    mechanicType: 'interceptor-command',
+    difficulty: 'Expert',
+    totalLevels: 10,
+    xpReward: 850,
+    icon: 'radio'
+  },
+
+  // TOPIC 5 — Privacy & Personal Data
+  {
+    topicNumber: 5,
+    gameNumber: 1,
+    title: 'Data Detective',
+    slug: 'data-detective',
+    shortDescription: 'Classify sensitive data tokens: Sort public identifiers versus confidential zero-exposure secrets.',
+    mechanicType: 'data-sorting',
+    difficulty: 'Easy',
+    totalLevels: 10,
+    xpReward: 450,
+    icon: 'database'
+  },
+  {
+    topicNumber: 5,
+    gameNumber: 2,
+    title: 'Privacy Settings',
+    slug: 'privacy-settings',
+    shortDescription: 'Harden social media profiles by dialing back geo-tagging, search indexing, and ad broker cookies.',
+    mechanicType: 'privacy-toggles',
+    difficulty: 'Medium',
+    totalLevels: 10,
+    xpReward: 500,
+    icon: 'sliders'
+  },
+  {
+    topicNumber: 5,
+    gameNumber: 3,
+    title: 'App Permission Manager',
+    slug: 'app-permission-manager',
+    shortDescription: 'Scrutinize aggressive mobile app requests demanding camera, contact, and microphone access.',
+    mechanicType: 'permission-audit',
+    difficulty: 'Medium',
+    totalLevels: 10,
+    xpReward: 550,
+    icon: 'shield-alert'
+  },
+  {
+    topicNumber: 5,
+    gameNumber: 4,
+    title: 'Oversharing Trap',
+    slug: 'oversharing-trap',
+    shortDescription: 'Examine social feeds to pinpoint background boarding passes, keys, badges, and vacation itinerary leaks.',
+    mechanicType: 'feed-scrutiny',
+    difficulty: 'Hard',
+    totalLevels: 10,
+    xpReward: 600,
+    icon: 'share-2'
+  },
+  {
+    topicNumber: 5,
+    gameNumber: 5,
+    title: 'Privacy Lockdown',
+    slug: 'privacy-lockdown',
+    shortDescription: 'Comprehensive digital footprint purge: Reclaim tracking vectors and achieve maximum stealth.',
+    mechanicType: 'lockdown-mission',
+    difficulty: 'Expert',
+    totalLevels: 10,
+    xpReward: 850,
+    icon: 'eye-off'
+  },
+
+  // TOPIC 6 — Device & Digital Security
+  {
+    topicNumber: 6,
+    gameNumber: 1,
+    title: 'Secure My Phone',
+    slug: 'secure-my-phone',
+    shortDescription: 'Configure phone encryption, biometric fallbacks, SIM PIN locks, and remote wipe safety nets.',
+    mechanicType: 'device-hardening',
+    difficulty: 'Easy',
+    totalLevels: 10,
+    xpReward: 450,
+    icon: 'smartphone'
+  },
+  {
+    topicNumber: 6,
+    gameNumber: 2,
+    title: 'Safe or Suspicious App',
+    slug: 'safe-or-suspicious-app',
+    shortDescription: 'Audit third-party APK installers, signature certificates, developer histories, and malware payloads.',
+    mechanicType: 'app-sandbox',
+    difficulty: 'Medium',
+    totalLevels: 10,
+    xpReward: 550,
+    icon: 'package'
+  },
+  {
+    topicNumber: 6,
+    gameNumber: 3,
+    title: 'Public Wi-Fi',
+    slug: 'public-wi-fi',
+    shortDescription: 'Spot rogue airport hotspots, evil twins, unencrypted captive portals, and engage secure VPN tunnels.',
+    mechanicType: 'wifi-sentinel',
+    difficulty: 'Medium',
+    totalLevels: 10,
+    xpReward: 550,
+    icon: 'wifi'
+  },
+  {
+    topicNumber: 6,
+    gameNumber: 4,
+    title: 'Update Alert',
+    slug: 'update-alert',
+    shortDescription: 'Distinguish authentic vendor security patches from trojan horse pop-ups claiming "Flash Player outdated".',
+    mechanicType: 'patch-verifier',
+    difficulty: 'Hard',
+    totalLevels: 10,
+    xpReward: 600,
+    icon: 'refresh-cw'
+  },
+  {
+    topicNumber: 6,
+    gameNumber: 5,
+    title: 'Device Rescue',
+    slug: 'device-rescue',
+    shortDescription: 'Isolate a compromised workstation, sever backdoor C2 beaconing, and restore system integrity.',
+    mechanicType: 'incident-cleanup',
+    difficulty: 'Expert',
+    totalLevels: 10,
+    xpReward: 850,
+    icon: 'terminal'
+  },
+
+  // TOPIC 7 — Cyber Emergency Response
+  {
+    topicNumber: 7,
+    gameNumber: 1,
+    title: 'You Clicked the Link',
+    slug: 'you-clicked-the-link',
+    shortDescription: 'Instant reaction drill! Disconnect network adapter, kill suspicious processes, and preserve logs.',
+    mechanicType: 'emergency-triage',
+    difficulty: 'Hard',
+    totalLevels: 10,
+    xpReward: 600,
+    icon: 'mouse-pointer'
+  },
+  {
+    topicNumber: 7,
+    gameNumber: 2,
+    title: 'Account Compromised',
+    slug: 'account-compromised',
+    shortDescription: 'Terminating active attacker sessions, changing recovery phones, and revoking rogue OAuth app tokens.',
+    mechanicType: 'session-reclaim',
+    difficulty: 'Hard',
+    totalLevels: 10,
+    xpReward: 650,
+    icon: 'user-minus'
+  },
+  {
+    topicNumber: 7,
+    gameNumber: 3,
+    title: 'Lost Phone',
+    slug: 'lost-phone',
+    shortDescription: 'Execute critical response: Trigger Find My Device, lock banking apps, and suspend eSIM carrier profile.',
+    mechanicType: 'lost-device',
+    difficulty: 'Hard',
+    totalLevels: 10,
+    xpReward: 650,
+    icon: 'help-circle'
+  },
+  {
+    topicNumber: 7,
+    gameNumber: 4,
+    title: 'Payment Scam',
+    slug: 'payment-scam',
+    shortDescription: 'Initiate fraud reversal, dispute transaction references, freeze cards, and file a cybercrime report.',
+    mechanicType: 'financial-triage',
+    difficulty: 'Hard',
+    totalLevels: 10,
+    xpReward: 700,
+    icon: 'credit-card'
+  },
+  {
+    topicNumber: 7,
+    gameNumber: 5,
+    title: 'Cyber Emergency',
+    slug: 'cyber-emergency',
+    shortDescription: 'FINAL ESCAPE ROOM: Simultaneous multi-vector crisis! Limited time, lives, and actions to save the grid.',
+    mechanicType: 'final-escape-room',
+    difficulty: 'Expert',
+    totalLevels: 10,
+    xpReward: 1000,
+    icon: 'flame'
+  }
+];

@@ -1,0 +1,166 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  /* Default: Neon Purple */
+  --cyber-bg: #090614;
+  --cyber-card: rgba(22, 16, 43, 0.85);
+  --cyber-border: rgba(168, 85, 247, 0.35);
+  --cyber-border-hover: rgba(192, 132, 252, 0.7);
+  --cyber-text: #f3f4f6;
+  --cyber-muted: #9ca3af;
+  --cyber-primary: #a855f7;
+  --cyber-primary-glow: rgba(168, 85, 247, 0.5);
+  --cyber-secondary: #06b6d4;
+  --cyber-secondary-glow: rgba(6, 182, 212, 0.4);
+  --cyber-accent: #f43f5e;
+  --cyber-danger: #ef4444;
+  --cyber-success: #10b981;
+  --cyber-warning: #f59e0b;
+}
+
+/* Theme 1: Neon Purple */
+.theme-neon-purple {
+  --cyber-bg: #090614;
+  --cyber-card: rgba(22, 16, 43, 0.88);
+  --cyber-border: rgba(168, 85, 247, 0.4);
+  --cyber-border-hover: rgba(192, 132, 252, 0.8);
+  --cyber-text: #f8fafc;
+  --cyber-muted: #a1a1aa;
+  --cyber-primary: #a855f7;
+  --cyber-primary-glow: rgba(168, 85, 247, 0.55);
+  --cyber-secondary: #06b6d4;
+  --cyber-secondary-glow: rgba(6, 182, 212, 0.4);
+  --cyber-accent: #ec4899;
+  --cyber-danger: #ef4444;
+  --cyber-success: #10b981;
+  --cyber-warning: #f59e0b;
+}
+
+/* Theme 2: Cyber Red */
+.theme-cyber-red {
+  --cyber-bg: #100606;
+  --cyber-card: rgba(38, 14, 14, 0.88);
+  --cyber-border: rgba(239, 68, 68, 0.4);
+  --cyber-border-hover: rgba(248, 113, 113, 0.8);
+  --cyber-text: #fef2f2;
+  --cyber-muted: #cbd5e1;
+  --cyber-primary: #ef4444;
+  --cyber-primary-glow: rgba(239, 68, 68, 0.55);
+  --cyber-secondary: #f97316;
+  --cyber-secondary-glow: rgba(249, 115, 22, 0.4);
+  --cyber-accent: #eab308;
+  --cyber-danger: #ef4444;
+  --cyber-success: #22c55e;
+  --cyber-warning: #fbbf24;
+}
+
+/* Theme 3: Matrix Green */
+.theme-matrix-green {
+  --cyber-bg: #030d07;
+  --cyber-card: rgba(8, 30, 16, 0.88);
+  --cyber-border: rgba(34, 197, 94, 0.4);
+  --cyber-border-hover: rgba(74, 222, 128, 0.8);
+  --cyber-text: #f0fdf4;
+  --cyber-muted: #86efac;
+  --cyber-primary: #22c55e;
+  --cyber-primary-glow: rgba(34, 197, 94, 0.55);
+  --cyber-secondary: #10b981;
+  --cyber-secondary-glow: rgba(16, 185, 129, 0.4);
+  --cyber-accent: #38bdf8;
+  --cyber-danger: #f43f5e;
+  --cyber-success: #22c55e;
+  --cyber-warning: #eab308;
+}
+
+/* Theme 4: Clean Cyber (Light) */
+.theme-clean-cyber {
+  --cyber-bg: #f8fafc;
+  --cyber-card: rgba(255, 255, 255, 0.92);
+  --cyber-border: rgba(99, 102, 241, 0.35);
+  --cyber-border-hover: rgba(99, 102, 241, 0.7);
+  --cyber-text: #0f172a;
+  --cyber-muted: #64748b;
+  --cyber-primary: #6366f1;
+  --cyber-primary-glow: rgba(99, 102, 241, 0.35);
+  --cyber-secondary: #0284c7;
+  --cyber-secondary-glow: rgba(2, 132, 199, 0.3);
+  --cyber-accent: #ec4899;
+  --cyber-danger: #dc2626;
+  --cyber-success: #16a34a;
+  --cyber-warning: #d97706;
+}
+
+/* Theme 5: Soft Digital (Light) */
+.theme-soft-digital {
+  --cyber-bg: #f0fdf4;
+  --cyber-card: rgba(255, 255, 255, 0.92);
+  --cyber-border: rgba(20, 184, 166, 0.35);
+  --cyber-border-hover: rgba(20, 184, 166, 0.7);
+  --cyber-text: #064e3b;
+  --cyber-muted: #4b5563;
+  --cyber-primary: #0d9488;
+  --cyber-primary-glow: rgba(13, 148, 136, 0.35);
+  --cyber-secondary: #0284c7;
+  --cyber-secondary-glow: rgba(2, 132, 199, 0.3);
+  --cyber-accent: #8b5cf6;
+  --cyber-danger: #e11d48;
+  --cyber-success: #059669;
+  --cyber-warning: #d97706;
+}
+
+/* Cyber Grid Background */
+.cyber-grid-pattern {
+  background-size: 40px 40px;
+  background-image: 
+    linear-gradient(to right, var(--cyber-border) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--cyber-border) 1px, transparent 1px);
+}
+
+/* Holographic sheen animation */
+@keyframes holoSheen {
+  0% { transform: translateX(-100%) rotate(25deg); }
+  50% { transform: translateX(100%) rotate(25deg); }
+  100% { transform: translateX(100%) rotate(25deg); }
+}
+
+.animate-holo {
+  position: relative;
+  overflow: hidden;
+}
+
+.animate-holo::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(
+    60deg,
+    transparent 20%,
+    rgba(255, 255, 255, 0.2) 40%,
+    rgba(255, 255, 255, 0.4) 50%,
+    rgba(255, 255, 255, 0.2) 60%,
+    transparent 80%
+  );
+  animation: holoSheen 6s infinite;
+  pointer-events: none;
+}
+
+/* Glassmorphic card styling */
+.cyber-panel {
+  background: var(--cyber-card);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--cyber-border);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+}
+
+.cyber-panel-glow {
+  background: var(--cyber-card);
+  backdrop-filter: blur(12px);
+  border: 1px solid var(--cyber-primary);
+  box-shadow: 0 0 20px var(--cyber-primary-glow);
+}

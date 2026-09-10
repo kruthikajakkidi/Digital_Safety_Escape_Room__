@@ -1,0 +1,21 @@
+{
+  "name": "digital-safety-escape-room",
+  "version": "1.0.0",
+  "description": "Interactive Cybersecurity Escape Room and Learning Platform",
+  "main": "server/server.js",
+  "scripts": {
+    "install:all": "npm install && cd server && npm install && cd ../client && npm install",
+    "seed": "cd server && node data/seeds.js",
+    "server": "cd server && node server.js",
+    "client": "cd client && npm run dev",
+    "dev": "concurrently \"npm run server\" \"npm run client\"",
+    "build": "cd client && npm run build",
+    "start": "cd server && node server.js"
+  },
+  "keywords": ["cybersecurity", "escape-room", "education", "game", "cyberpunk", "mern"],
+  "author": "Digital Safety Escape Room Team",
+  "license": "ISC",
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  }
+}
