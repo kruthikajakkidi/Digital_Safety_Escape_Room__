@@ -40,8 +40,11 @@ exports.getLeaderboard = async (req, res) => {
 
       entries = Object.values(userScoresMap).sort((a, b) => b.score - a.score);
     } else {
-      // Global or Weekly
-      const users = await User.find().select('username avatar level totalScore xp streakDays badgesEarned createdAt').sort({ totalScore: -1 }).limit(100);
+      // Global or Weekly - only display players with active earned scores > 0
+      const users = await User.find({ totalScore: { $gt: 0 } })
+        .select('username avatar level totalScore xp streakDays badgesEarned createdAt')
+        .sort({ totalScore: -1 })
+        .limit(100);
 
       entries = users.map((u) => {
         // For weekly, calculate a realistic score factor based on streak and totalScore

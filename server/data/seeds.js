@@ -130,81 +130,27 @@ const seedDatabase = async () => {
     const salt = await bcrypt.genSalt(10);
     const demoPassword = await bcrypt.hash('CyberMaster2026!', salt);
 
-    const demoUsers = [
-      {
-        username: 'Alex_Viper',
-        email: 'alex@cyberworld.net',
-        password: demoPassword,
-        role: 'player',
-        avatar: 'cyber_runner',
-        level: 14,
-        xp: 6850,
-        totalScore: 28450,
-        streakDays: 7,
-        themePreference: 'neon-purple'
-      },
-      {
-        username: 'Maya_Glitch',
-        email: 'maya@cyberworld.net',
-        password: demoPassword,
-        role: 'player',
-        avatar: 'cyber_netrunner',
-        level: 13,
-        xp: 6200,
-        totalScore: 26720,
-        streakDays: 5,
-        themePreference: 'matrix-green'
-      },
-      {
-        username: 'Kruthika_Shield',
-        email: 'kruthika@cyberworld.net',
-        password: demoPassword,
-        role: 'player',
-        avatar: 'cyber_sentinel',
-        level: 12,
-        xp: 5900,
-        totalScore: 25900,
-        streakDays: 6,
-        themePreference: 'cyber-red'
-      },
-      {
-        username: 'Neo_Cipher',
-        email: 'neo@cyberworld.net',
-        password: demoPassword,
-        role: 'player',
-        avatar: 'cyber_runner',
-        level: 11,
-        xp: 5100,
-        totalScore: 22800,
-        streakDays: 4,
-        themePreference: 'clean-cyber'
-      },
-      {
-        username: 'Admin_Operator',
-        email: 'admin@cyberworld.net',
-        password: demoPassword,
-        role: 'admin',
-        avatar: 'cyber_sentinel',
-        level: 25,
-        xp: 15000,
-        totalScore: 48900,
-        streakDays: 18,
-        themePreference: 'neon-purple'
-      }
-    ];
+    const defaultAdmin = {
+      username: 'Admin_Operator',
+      email: 'admin@cyberworld.net',
+      password: demoPassword,
+      role: 'admin',
+      avatar: 'cyber_sentinel',
+      level: 1,
+      xp: 0,
+      totalScore: 0,
+      streakDays: 1,
+      themePreference: 'neon-purple'
+    };
 
-    for (const u of demoUsers) {
-      await User.findOneAndUpdate({ email: u.email }, u, { upsert: true, new: true });
-    }
-    console.log('[Seed] Demo users and Admin account ready!');
+    await User.findOneAndUpdate({ email: defaultAdmin.email }, defaultAdmin, { upsert: true, new: true });
+    console.log('[Seed] Admin account ready with 0 score.');
 
     console.log('\n=========================================');
     console.log('🎉 DATABASE SEEDING COMPLETED SUCCESSFULLY!');
     console.log('7 Major Topics | 35 Games | 350 Levels');
-    console.log('Demo Player Credentials:');
-    console.log('  Email: kruthika@cyberworld.net | Password: CyberMaster2026!');
-    console.log('Demo Admin Credentials:');
-    console.log('  Email: admin@cyberworld.net    | Password: CyberMaster2026!');
+    console.log('Admin Credentials:');
+    console.log('  Email: admin@cyberworld.net | Password: CyberMaster2026!');
     console.log('=========================================\n');
 
     process.exit(0);

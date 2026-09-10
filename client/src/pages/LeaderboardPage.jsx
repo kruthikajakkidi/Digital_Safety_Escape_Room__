@@ -190,6 +190,15 @@ export const LeaderboardPage = () => {
               </tr>
             </thead>
             <tbody className="divide-y divide-cyber-border/20">
+              {leaderboard.length === 0 && (
+                <tr>
+                  <td colSpan="6" className="py-16 text-center text-cyber-muted font-mono">
+                    <Trophy className="w-10 h-10 mx-auto mb-3 opacity-30 text-amber-400 animate-pulse" />
+                    <p className="text-sm text-white font-cyber font-bold mb-1">NO AGENTS ON THE LEADERBOARD YET</p>
+                    <p className="text-xs text-cyber-muted">Complete your first escape room mission to claim the #1 spot!</p>
+                  </td>
+                </tr>
+              )}
               {leaderboard.map((entry) => {
                 const isYou = entry.isCurrentUser;
                 return (
