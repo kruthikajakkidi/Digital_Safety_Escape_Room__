@@ -98,12 +98,9 @@ export const TopicsOverviewPage = () => {
                 <h3 className="font-cyber font-bold text-xl text-white mb-1">
                   {topic.title}
                 </h3>
-                <span className="text-xs font-mono text-cyan-300 font-bold block mb-2">
+                <span className="text-xs font-mono text-cyan-300 font-bold block">
                   District: {topic.districtName}
                 </span>
-                <p className="text-xs font-mono text-cyber-muted line-clamp-3 leading-relaxed">
-                  {topic.description}
-                </p>
               </div>
             </div>
 

@@ -66,6 +66,18 @@ export const AuthProvider = ({ children }) => {
     }
   };
 
+  const googleLogin = async (googleData) => {
+    const res = await api.post('/auth/google', googleData);
+    if (res.success && res.token) {
+      localStorage.setItem('cyber_token', res.token);
+      setUser(res.user);
+      if (res.user.themePreference) {
+        setTheme(res.user.themePreference);
+      }
+      return res.user;
+    }
+  };
+
   const logout = () => {
     localStorage.removeItem('cyber_token');
     setUser(null);
@@ -81,7 +93,7 @@ export const AuthProvider = ({ children }) => {
   };
 
   return (
-    <AuthContext.Provider value={{ user, loading, login, register, guestLogin, logout, refreshUser }}>
+    <AuthContext.Provider value={{ user, loading, login, register, guestLogin, googleLogin, logout, refreshUser }}>
       {children}
     </AuthContext.Provider>
   );

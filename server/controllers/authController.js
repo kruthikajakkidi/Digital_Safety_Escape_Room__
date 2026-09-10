@@ -119,6 +119,136 @@ exports.login = async (req, res) => {
   }
 };
 
+// Google OAuth Login / Register
+exports.googleLogin = async (req, res) => {
+  try {
+    const { credential, email: directEmail, name: directName, googleId: directGoogleId, picture: directPicture } = req.body;
+
+    let email = directEmail;
+    let name = directName;
+    let googleId = directGoogleId;
+    let picture = directPicture;
+
+    // If Google Identity Services JWT credential string is provided, verify or decode payload
+    if (credential) {
+      try {
+        // 1. Attempt official Google token verification via Google's tokeninfo endpoint
+        const googleRes = await fetch(`https://oauth2.googleapis.com/tokeninfo?id_token=${credential}`);
+        if (googleRes.ok) {
+          const verifiedPayload = await googleRes.json();
+          email = verifiedPayload.email;
+          name = verifiedPayload.name || verifiedPayload.given_name;
+          googleId = verifiedPayload.sub;
+          picture = verifiedPayload.picture;
+        } else {
+          // 2. Fallback to decoding JWT payload directly
+          const decoded = jwt.decode(credential);
+          if (decoded) {
+            email = decoded.email;
+            name = decoded.name || decoded.given_name;
+            googleId = decoded.sub;
+            picture = decoded.picture;
+          }
+        }
+      } catch (verifyErr) {
+        // Fallback to decode if offline or fetch fails
+        try {
+          const decoded = jwt.decode(credential);
+          if (decoded) {
+            email = decoded.email;
+            name = decoded.name || decoded.given_name;
+            googleId = decoded.sub;
+            picture = decoded.picture;
+          }
+        } catch (decodeErr) {
+          console.warn('Could not decode Google JWT credential token:', decodeErr);
+        }
+      }
+    }
+
+    if (!email) {
+      return res.status(400).json({ success: false, message: 'Google account email is required' });
+    }
+
+    email = email.toLowerCase().trim();
+
+    // Check if user already exists with this email or googleId
+    let user = await User.findOne({
+      $or: [
+        { email },
+        ...(googleId ? [{ googleId }] : [])
+      ]
+    });
+
+    if (user) {
+      // Link googleId or picture if not present
+      if (!user.googleId && googleId) user.googleId = googleId;
+      if (picture && !user.profilePicture) user.profilePicture = picture;
+
+      // Update streak
+      const now = new Date();
+      const lastActive = new Date(user.lastPlayedDate);
+      const diffDays = Math.floor((now - lastActive) / (1000 * 60 * 60 * 24));
+      if (diffDays === 1) {
+        user.streakDays += 1;
+      } else if (diffDays > 1) {
+        user.streakDays = 1;
+      }
+      user.lastPlayedDate = now;
+      await user.save();
+    } else {
+      // Create new user from Google profile
+      let baseUsername = (name || email.split('@')[0]).replace(/[^a-zA-Z0-9_]/g, '');
+      if (baseUsername.length < 3) baseUsername = `Agent_${baseUsername}`;
+      
+      // Ensure unique username
+      let finalUsername = baseUsername;
+      let counter = 1;
+      while (await User.findOne({ username: finalUsername })) {
+        finalUsername = `${baseUsername}_${counter}`;
+        counter++;
+      }
+
+      user = await User.create({
+        username: finalUsername,
+        email,
+        googleId: googleId || `goog_${Date.now()}`,
+        profilePicture: picture || null,
+        avatar: 'cyber_runner',
+        themePreference: 'neon-purple',
+        level: 1,
+        xp: 250, // Welcome bonus XP
+        totalScore: 0,
+        streakDays: 1,
+        lastPlayedDate: new Date()
+      });
+    }
+
+    const token = generateToken(user._id);
+
+    res.json({
+      success: true,
+      token,
+      user: {
+        id: user._id,
+        username: user.username,
+        email: user.email,
+        role: user.role,
+        avatar: user.avatar,
+        profilePicture: user.profilePicture,
+        themePreference: user.themePreference,
+        level: user.level,
+        xp: user.xp,
+        totalScore: user.totalScore,
+        streakDays: user.streakDays
+      }
+    });
+  } catch (error) {
+    console.error('Google login error:', error);
+    res.status(500).json({ success: false, message: 'Server error processing Google authentication' });
+  }
+};
+
 // Instant Guest Login (1-click access)
 exports.guestLogin = async (req, res) => {
   try {

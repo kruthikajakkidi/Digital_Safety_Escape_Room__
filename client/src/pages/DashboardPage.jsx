@@ -271,12 +271,9 @@ export const DashboardPage = () => {
                   )}
                 </div>
 
-                <h3 className="font-cyber font-bold text-lg text-white mb-2">
+                <h3 className="font-cyber font-bold text-lg text-white mb-4">
                   {topic.title}
                 </h3>
-                <p className="text-xs font-mono text-cyber-muted line-clamp-2 mb-4 leading-relaxed">
-                  {topic.description}
-                </p>
               </div>
 
               <div className="space-y-3 pt-4 border-t border-cyber-border/30">

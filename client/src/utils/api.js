@@ -1,5 +1,8 @@
 // API utility module
-const API_BASE = '/api';
+// Uses VITE_API_URL if defined (e.g. Render backend URL 'https://digital-safety-escape-room.onrender.com/api')
+// Otherwise defaults to '/api' for Vite local dev proxy
+const rawBase = import.meta.env.VITE_API_URL || '/api';
+const API_BASE = rawBase.replace(/\/+$/, '');
 
 export const api = {
   async request(endpoint, options = {}) {
@@ -11,7 +14,8 @@ export const api = {
     };
 
     try {
-      const response = await fetch(`${API_BASE}${endpoint}`, {
+      const cleanEndpoint = endpoint.startsWith('/') ? endpoint : `/${endpoint}`;
+      const response = await fetch(`${API_BASE}${cleanEndpoint}`, {
         ...options,
         headers
       });

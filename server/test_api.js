@@ -10,9 +10,10 @@ const runApiTests = async () => {
   const dotenv = require('dotenv');
   dotenv.config();
 
+  const connectDB = require('./config/db');
+  await connectDB();
+
   const app = express();
-  await mongoose.connect(process.env.MONGO_URI || 'mongodb://127.0.0.1:27017/digital_safety_escape_room');
-  console.log('✓ Connected to MongoDB');
 
   app.use(cors());
   app.use(express.json());

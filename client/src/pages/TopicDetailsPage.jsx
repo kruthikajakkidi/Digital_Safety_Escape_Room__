@@ -179,10 +179,6 @@ export const TopicDetailsPage = () => {
                   {game.title}
                 </h3>
 
-                <p className="text-xs font-mono text-cyber-muted line-clamp-2 leading-relaxed">
-                  {game.shortDescription}
-                </p>
-
                 {/* Progress stats */}
                 <div className="space-y-1.5 pt-2">
                   <div className="flex justify-between text-[11px] font-mono">

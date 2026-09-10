@@ -76,9 +76,8 @@ const achievementsData = [
 
 const seedDatabase = async () => {
   try {
-    const mongoUri = process.env.MONGO_URI || 'mongodb://127.0.0.1:27017/digital_safety_escape_room';
-    await mongoose.connect(mongoUri);
-    console.log(`[Seed] Connected to MongoDB at ${mongoUri}`);
+    const connectDB = require('../config/db');
+    await connectDB();
 
     // Clear existing collections
     await Topic.deleteMany({});
