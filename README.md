@@ -2,7 +2,7 @@
 
 ## 📌 Overview
 Digital Safety Escape Room is a full-stack cybersecurity training and simulation platform built using the MERN stack. It transforms digital safety and defense education into an interactive escape room experience featuring 7 cybersecurity districts, 35 escape rooms, 350 challenges, realistic simulated interfaces (email, browser, chat, mobile), and a verifiable holographic badge system.
-
+ 
 ---
 
 ## 🚀 Features
