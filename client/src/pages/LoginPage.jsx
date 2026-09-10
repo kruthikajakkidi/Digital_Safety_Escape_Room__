@@ -126,7 +126,6 @@ export const LoginPage = () => {
           {/* Social Sign-In Divider */}
           <div className="relative flex items-center justify-center">
             <div className="border-t border-cyber-border/40 w-full" />
-            <span className="bg-cyber-card px-3 text-[11px] font-mono text-cyber-muted uppercase">OR CONTINUE WITH</span>
             <div className="border-t border-cyber-border/40 w-full" />
           </div>
 
