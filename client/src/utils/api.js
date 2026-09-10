@@ -1,8 +1,11 @@
 // API utility module
-// Uses VITE_API_URL if defined (e.g. Render backend URL 'https://digital-safety-escape-room.onrender.com/api')
+// Uses VITE_API_URL if defined (e.g. Render backend URL 'https://digital-safety-escape-room-9s6d.onrender.com/api')
 // Otherwise defaults to '/api' for Vite local dev proxy
-const rawBase = import.meta.env.VITE_API_URL || '/api';
-const API_BASE = rawBase.replace(/\/+$/, '');
+let rawBase = (import.meta.env.VITE_API_URL || '/api').trim().replace(/\/+$/, '');
+if (/^https?:\/\//i.test(rawBase) && !rawBase.endsWith('/api')) {
+  rawBase = `${rawBase}/api`;
+}
+const API_BASE = rawBase;
 
 export const api = {
   async request(endpoint, options = {}) {
@@ -20,9 +23,18 @@ export const api = {
         headers
       });
 
-      const data = await response.json();
+      const text = await response.text();
+      let data = {};
+      try {
+        data = text ? JSON.parse(text) : {};
+      } catch (parseErr) {
+        if (!response.ok) {
+          throw new Error(`Server returned error ${response.status} (${response.statusText || 'Endpoint error'})`);
+        }
+      }
+
       if (!response.ok) {
-        throw new Error(data.message || 'API request failed');
+        throw new Error(data.message || `API request failed with status ${response.status}`);
       }
       return data;
     } catch (error) {

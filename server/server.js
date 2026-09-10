@@ -60,17 +60,30 @@ app.use(cors({
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-// Routes
+// Routes (mounted at both /api/* and /* to seamlessly support any frontend base URL configuration)
 app.use('/api/auth', require('./routes/authRoutes'));
+app.use('/auth', require('./routes/authRoutes'));
+
 app.use('/api/topics', require('./routes/topicRoutes'));
+app.use('/topics', require('./routes/topicRoutes'));
+
 app.use('/api/games', require('./routes/gameRoutes'));
+app.use('/games', require('./routes/gameRoutes'));
+
 app.use('/api/progress', require('./routes/progressRoutes'));
+app.use('/progress', require('./routes/progressRoutes'));
+
 app.use('/api/badges', require('./routes/badgeRoutes'));
+app.use('/badges', require('./routes/badgeRoutes'));
+
 app.use('/api/leaderboard', require('./routes/leaderboardRoutes'));
+app.use('/leaderboard', require('./routes/leaderboardRoutes'));
+
 app.use('/api/admin', require('./routes/adminRoutes'));
+app.use('/admin', require('./routes/adminRoutes'));
 
 // Health check
-app.get('/api/health', (req, res) => {
+app.get(['/api/health', '/health'], (req, res) => {
   res.json({ status: 'active', platform: 'Digital Safety Escape Room API', version: '1.0.0' });
 });
 

@@ -18,33 +18,41 @@ export const GoogleSignInButton = ({ label = 'Continue with Google' }) => {
   useEffect(() => {
     // If a live Google Client ID is configured in .env, load Google Identity Services
     if (clientId && typeof window !== 'undefined') {
-      const script = document.createElement('script');
-      script.src = 'https://accounts.google.com/gsi/client';
-      script.async = true;
-      script.defer = true;
-      script.onload = () => {
-        if (window.google) {
-          window.google.accounts.id.initialize({
-            client_id: clientId,
-            callback: handleCredentialResponse
-          });
-          const btnDiv = document.getElementById('google-official-btn');
-          if (btnDiv) {
-            window.google.accounts.id.renderButton(btnDiv, {
-              theme: 'filled_black',
-              size: 'large',
-              width: '100%',
-              text: 'continue_with'
+      const initGsi = () => {
+        if (window.google?.accounts?.id) {
+          try {
+            window.google.accounts.id.initialize({
+              client_id: clientId,
+              callback: handleCredentialResponse,
+              auto_select: false,
+              cancel_on_tap_outside: true
             });
+            const btnDiv = document.getElementById('google-official-btn');
+            if (btnDiv && btnDiv.childElementCount === 0) {
+              window.google.accounts.id.renderButton(btnDiv, {
+                theme: 'filled_black',
+                size: 'large',
+                shape: 'rectangular',
+                text: 'continue_with',
+                width: 320
+              });
+            }
+          } catch (err) {
+            console.warn('Google GSI initialization note:', err);
           }
         }
       };
-      document.body.appendChild(script);
-      return () => {
-        try {
-          document.body.removeChild(script);
-        } catch (e) {}
-      };
+
+      if (window.google) {
+        initGsi();
+      } else {
+        const script = document.createElement('script');
+        script.src = 'https://accounts.google.com/gsi/client';
+        script.async = true;
+        script.defer = true;
+        script.onload = initGsi;
+        document.body.appendChild(script);
+      }
     }
   }, [clientId]);
 
@@ -67,7 +75,16 @@ export const GoogleSignInButton = ({ label = 'Continue with Google' }) => {
   const handleGoogleClick = async () => {
     play.click();
     if (clientId && window.google?.accounts?.id) {
-      window.google.accounts.id.prompt();
+      try {
+        window.google.accounts.id.prompt((notification) => {
+          // If Google blocked the prompt due to origin 403 or suppressed it, open fallback modal
+          if (notification.isNotDisplayed() || notification.isSkippedMoment()) {
+            setShowPrompt(true);
+          }
+        });
+      } catch (e) {
+        setShowPrompt(true);
+      }
     } else {
       // Smooth Google Account simulation modal when Client ID is not configured yet
       setShowPrompt(true);
