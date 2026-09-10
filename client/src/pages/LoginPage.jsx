@@ -3,7 +3,6 @@ import { Link, useNavigate } from 'react-router-dom';
 import { Shield, Lock, User, ArrowRight, Zap, AlertCircle } from 'lucide-react';
 import { useAuth } from '../context/AuthContext';
 import { useSound } from '../context/SoundContext';
-import { GoogleSignInButton } from '../components/auth/GoogleSignInButton';
 
 export const LoginPage = () => {
   const { login, guestLogin } = useAuth();
@@ -123,14 +122,6 @@ export const LoginPage = () => {
             </button>
           </form>
 
-          {/* Social Sign-In Divider */}
-          <div className="relative flex items-center justify-center">
-            <div className="border-t border-cyber-border/40 w-full" />
-            <div className="border-t border-cyber-border/40 w-full" />
-          </div>
-
-          {/* Google Sign-In */}
-          <GoogleSignInButton label="Continue with Google" />
 
           {/* Quick Demo Fill Pills */}
           <div className="pt-2 border-t border-cyber-border/30 flex items-center justify-between text-[11px] font-mono text-cyber-muted">

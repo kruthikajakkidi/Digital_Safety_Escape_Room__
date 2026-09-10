@@ -3,7 +3,6 @@ import { Link, useNavigate } from 'react-router-dom';
 import { Shield, Lock, User, Mail, ArrowRight, AlertCircle, Palette } from 'lucide-react';
 import { useAuth } from '../context/AuthContext';
 import { useSound } from '../context/SoundContext';
-import { GoogleSignInButton } from '../components/auth/GoogleSignInButton';
 
 export const RegisterPage = () => {
   const { register, guestLogin } = useAuth();
@@ -132,14 +131,6 @@ export const RegisterPage = () => {
             </button>
           </form>
 
-          {/* Social Divider */}
-          <div className="relative flex items-center justify-center">
-            <div className="border-t border-cyber-border/40 w-full" />
-            <span className="bg-cyber-card px-3 text-[11px] font-mono text-cyber-muted uppercase">OR REGISTER WITH</span>
-            <div className="border-t border-cyber-border/40 w-full" />
-          </div>
-
-          <GoogleSignInButton label="Sign up with Google" />
         </div>
 
         <div className="text-center text-xs font-mono text-cyber-muted">
