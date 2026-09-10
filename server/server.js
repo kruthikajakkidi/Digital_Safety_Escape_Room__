@@ -15,7 +15,8 @@ const allowedOrigins = [
   'http://localhost:5173',
   'http://127.0.0.1:5173',
   'http://localhost:3000',
-  'http://127.0.0.1:3000'
+  'http://127.0.0.1:3000',
+  'https://digital-safety-escape-room-9s6d.onrender.com'
 ];
 
 if (process.env.CLIENT_URL) {
